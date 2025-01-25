@@ -3,7 +3,9 @@
 **Trying to read an article with annoying ads or interruptions?** readify.me provides a safe, easy, open-source solution that allows you to read articles in peace - all without the need to download any software, create an account or even store any cookies! It also allows you to bypass annoying paywalls on some sites.
 
 # New features in version 2.0!
-I have forked from [**jotslo's**](https://github.com/jotslo) original [**readify.me**](https://github.com/jotslo/readify.me/tree/main) codebase that was seemingly abandoned.
+I have forked from [**jotslo's**](https://github.com/jotslo) original [**readify.me**](https://github.com/jotslo/readify.me/tree/main) codebase that was seemingly abandoned and have added features, with more planned in the future.
+
+# CHANGELOG v 2.0
 - Added option to right-click a link and "Open in Readify" to the Chrome extension.
 - Added a Firefox extension
 - Fixed some code in both the extensions and main applet that I felt could be optimized
