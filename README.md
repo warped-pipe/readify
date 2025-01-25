@@ -1,3 +1,4 @@
+** I need to upgrade my webhost for VPN  usage to make this work, I think. So, it's currently broken. Check back next week **
 
 # Introduction
 **Trying to read an article with annoying ads or interruptions?** readify.me provides a safe, easy, open-source solution that allows you to read articles in peace - all without the need to download any software, create an account or even store any cookies! It also allows you to bypass annoying paywalls on some sites.
