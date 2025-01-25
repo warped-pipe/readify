@@ -2,10 +2,10 @@
 <article>
 <br>
 <b>
-readify.me
+readify
 </b>
 by
-<a href="https://jotslo.com" id="url" target="_blank">
+<a href="https://readify.warp-pipe.net/" id="url" target="_blank">
 jotslo
 </a>
 <pages>

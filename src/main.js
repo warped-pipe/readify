@@ -1,6 +1,54 @@
 // proxy used to access webpage content
 const proxy = "https://api.allorigins.win/get?url=";
 
+// Bot spoofing headers
+const headers = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)", // Bot-like user-agent (Googlebot)
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8", // Common bot-like accept headers
+    "Accept-Language": "en-US,en;q=0.9", // English language preference
+    "Connection": "close", // A bot often closes the connection immediately after receiving data
+    "Referer": "", // Avoiding the Referer header to make it seem like a bot
+    "Cookie": "" // Avoid sending cookies (some websites track cookie values for paywalls)
+};
+
+function loadWebpageWithBotSpoof() {
+    // Send the request with bot headers
+    $.ajax({
+        url: proxy + encodeURIComponent(url),
+        type: 'GET',
+        headers: headers,  // Adding headers to spoof bot behavior
+        success: function(data) {
+            if (data.contents) {
+                var htmlContent = recursePage($(data.contents), []).join("\n");
+                var pageHTML = removeUselessInfo($(files.headerContent.format(domain, siteName, url) + htmlContent + files.footerContent))[0].outerHTML;
+
+                document.body.innerHTML = pageHTML;
+                document.title = title;
+            } else {
+                window.location.replace("https://readify.warp-pipe.net/error.html");
+            }
+        },
+        error: function() {
+            window.location.replace("https://readify.warp-pipe.net/error.html");
+        }
+    });
+}
+
+function randomBotDelay(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function loadWebpageWithRapidRequests() {
+    // Simulate rapid requests with a random delay between 0ms and 300ms
+    setTimeout(function() {
+        loadWebpageWithBotSpoof();  // Call the function to load the page
+    }, randomBotDelay(0, 300));  // Small random delay to simulate bot request speed
+}
+
+// Call the function to start loading the page with bot spoofing
+loadWebpageWithBotSpoof();
+
+
 // config file variables
 var filesCounted = 0;
 var files = {
@@ -188,7 +236,7 @@ function loadWebpage() {
         
         // if website has no content, redirect to error page
         else {
-            window.location.replace("https://readify.me/error");
+            window.location.replace("https://readify.warp-pipe.net/error.html");
         }
     })
 }
@@ -212,5 +260,5 @@ if (protocol) {
 
 // otherwise, redirect to error page
 else {
-    window.location.replace("https://readify.me/error");
+    window.location.replace("https://readify.warp-pipe.net/error.html");
 }

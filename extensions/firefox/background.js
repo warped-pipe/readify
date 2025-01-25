@@ -1,7 +1,9 @@
 const toolUrl = "https://readify.me/";
 
-chrome.action.onClicked.addListener(function(tab) {
-    chrome.tabs.query({ currentWindow: true, active: true }, function(tabs) {
+// When the browser action button is clicked, execute this function
+browser.browserAction.onClicked.addListener(function(tab) {
+    // Query the active tab
+    browser.tabs.query({ currentWindow: true, active: true }).then(function(tabs) {
         var currentUrl = tabs[0].url;
 
         // Check if the current URL is a Readify article page
@@ -11,24 +13,24 @@ chrome.action.onClicked.addListener(function(tab) {
 
             // If it's already a Readify article, navigate to the original article URL
             if (originalUrl.startsWith("http")) {
-                chrome.tabs.update(tabs[0].id, { url: originalUrl });
+                browser.tabs.update(tabs[0].id, { url: originalUrl });
             }
         } else {
             // Otherwise, navigate to the Readify page with the current URL as part of it
-            chrome.tabs.update(tabs[0].id, { url: toolUrl + currentUrl });
+            browser.tabs.update(tabs[0].id, { url: toolUrl + currentUrl });
         }
     });
 });
 
 // Create context menu for links
-chrome.contextMenus.create({
+browser.contextMenus.create({
     id: "openInReadify",
     title: "Open in Readify",
     contexts: ["link"]  // Only show when right-clicking a link
 });
 
 // Listen for context menu item click
-chrome.contextMenus.onClicked.addListener(function(info, tab) {
+browser.contextMenus.onClicked.addListener(function(info, tab) {
     if (info.menuItemId === "openInReadify") {
         // Get the URL of the clicked link
         let linkUrl = info.linkUrl;
@@ -39,14 +41,14 @@ chrome.contextMenus.onClicked.addListener(function(info, tab) {
         }
 
         // Open the link in the current tab
-        chrome.tabs.update(tab.id, { url: linkUrl });
+        browser.tabs.update(tab.id, { url: linkUrl });
     }
 });
 
 // When the browser action button is clicked, execute this function
-chrome.browserAction.onClicked.addListener(function(tab) {
+browser.browserAction.onClicked.addListener(function(tab) {
     // Query the active tab
-    chrome.tabs.query({ currentWindow: true, active: true }, function(tabs) {
+    browser.tabs.query({ currentWindow: true, active: true }).then(function(tabs) {
         var currentUrl = tabs[0].url;
 
         // Check if the current URL is a Readify article page
@@ -56,11 +58,11 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 
             // If it's already a Readify article, navigate to the original article URL
             if (originalUrl.startsWith("http")) {
-                chrome.tabs.update(tabs[0].id, { url: originalUrl });
+                browser.tabs.update(tabs[0].id, { url: originalUrl });
             }
         } else {
             // Otherwise, navigate to the Readify page with the current URL as part of it
-            chrome.tabs.update(tabs[0].id, { url: toolUrl + currentUrl });
+            browser.tabs.update(tabs[0].id, { url: toolUrl + currentUrl });
         }
     });
 });
