@@ -1,7 +1,7 @@
 ![readify.me](assets/logo.png)
 
 # Introduction
-**Trying to read an article with annoying ads or interruptions?** readify.me provides a safe, easy, open-source solution that allows you to read articles in peace - all without the need to download any software, create an account or even store any cookies!
+**Trying to read an article with annoying ads or interruptions?** readify.me provides a safe, easy, open-source solution that allows you to read articles in peace - all without the need to download any software, create an account or even store any cookies! It also allows you to bypass annoying paywalls on some sites.
 
 # New features in version 2.0!
 I have forked from [**jotslo's**](https://github.com/jotslo) original [**readify.me**](https://github.com/jotslo/readify.me/tree/main) codebase that was seemingly abandoned.
